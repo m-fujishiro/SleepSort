@@ -16,7 +16,7 @@ int main() {
 	//ループで回すためにvector配列を作る
 	vector<thread> th;
 	//引数に関数を入れることで並列処理ができる 
-	for (int i : arr) {	th.push_back(thread(sleepSort, i));	}
+	for (int i : arr) th.push_back(thread(sleepSort, i));	
 	//joinしなければいけない
 	for (int i = 0; i < th.size(); i++) th[i].join();
 	cout << endl;
@@ -26,7 +26,7 @@ int main() {
 void sleepSort(int i) {
 	//このくらいなら一応安全性がほんの少しマシ？
 	this_thread::sleep_for(std::chrono::microseconds(i*10000));
-	cout << i << flush;
+	cout << i << endl;
 }
 
 
